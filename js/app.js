@@ -4,11 +4,11 @@ const minute = second * 60;
 const hour = minute * 60;
 const day = hour * 24;
 
-let mockupTimeNow = new Date('2019-12-31 23:59:58').getTime();
+let current = new Date('2019-12-31 23:59:58').getTime();
 let countdown = new Date('2020-01-01 00:00:00').getTime();
 
 let interval = setInterval(function() {
-  let distance = countdown - mockupTimeNow;
+  let distance = countdown - current;
 
   if (distance <= 0) {
     clearInterval(interval);
@@ -20,7 +20,7 @@ let interval = setInterval(function() {
   document.getElementById('hours').getElementsByClassName('number')[0].innerHTML = pad(parseInt((distance % day)/ hour));
   document.getElementById('minutes').getElementsByClassName('number')[0].innerHTML = pad(parseInt((distance % hour) / minute));
   document.getElementById('seconds').getElementsByClassName('number')[0].innerHTML = pad(parseInt((distance % minute) / second));
-  mockupTimeNow += second;
+  current += second;
 }, second);
 
 function pad(n) {
